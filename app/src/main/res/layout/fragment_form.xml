@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/teal_700"
+    tools:context=".ui.home.FormFragment"
+>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.NoteApp.AppBarOverlay">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/dark"
+            app:popupTheme="@style/Theme.NoteApp.PopupOverlay" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/some_id"
+                    android:layout_width="53dp"
+                    android:textColor="@color/purple_200"
+                    android:layout_height="23dp"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="300dp"
+                    android:text="Готово"
+
+                    />
+                <TextView
+                    android:id="@+id/s_id"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_height="23dp"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="48dp"
+                    android:text="30 мая"/>
+
+                <TextView
+                    android:id="@+id/m_id"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/gray"
+                    android:layout_height="23dp"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="103dp"
+                    android:text="17:13"
+
+                    />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="1dp"
+                    android:src="@drawable/shape1" />
+
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <EditText
+        android:id="@+id/title_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/white"
+        android:hint="Input title" />
+
+    <EditText
+        android:id="@+id/desc_et"
+        android:textColorHint="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Input desc"/>
+
+    <Button
+        android:id="@+id/btn_save"
+        android:text="Save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+</LinearLayout>

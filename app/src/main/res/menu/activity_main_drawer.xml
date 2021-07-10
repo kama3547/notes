@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:iconTint="@color/white"
+            android:icon="@drawable/ic_send"
+            android:title="Поделиться" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:iconTint="@color/white"
+            android:icon="@drawable/ic_seting"
+            android:title="Настройки" />
+
+        <item
+            android:title=" "/>
+
+        <item
+        android:title=" "/>
+
+        <item
+            android:id="@+id/nav_slideshow"
+            android:iconTint="@color/white"
+            android:icon="@drawable/ic_baseline_report_24"
+            android:title="О разработчиках" />
+
+        <item
+            android:id="@+id/nav_exit"
+            android:iconTint="@color/white"
+            android:icon="@drawable/ic_baseline_power_settings_new_24"
+            android:title="Выход" />
+
+
+
+    </group>
+
+</menu>
