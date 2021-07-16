@@ -7,19 +7,20 @@
 
         <item
             android:id="@+id/nav_home"
-            android:iconTint="@color/white"
             android:icon="@drawable/ic_send"
             android:title="Поделиться" />
+
         <item
             android:id="@+id/nav_gallery"
-            android:iconTint="@color/white"
             android:icon="@drawable/ic_seting"
             android:title="Настройки" />
 
         <item
+            android:id="@+id/rr"
             android:title=" "/>
 
         <item
+            android:id="@+id/gg"
         android:title=" "/>
 
         <item

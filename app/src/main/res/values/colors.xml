@@ -10,6 +10,11 @@
     <color name="dark">#0E0C0C</color>#80B1B1B1
     <color name="gray">#80B1B1B1</color>#E5E5E5
     <color name="white2">#E5E5E5</color>
+    <color name="gray2">#505050</color>#191818
+    <color name="dark_gray">#191818</color>
+    <color name="white_light">#DADADA</color>
+
+
 
 
 </resources>
