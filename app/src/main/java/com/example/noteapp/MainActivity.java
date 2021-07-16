@@ -26,9 +26,9 @@ import com.example.noteapp.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
-    private TaskAdapter taskAdapter;
-    private RecyclerView recyclerView;
+    Uri uri;
     ImageView imageView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,9 +68,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent("android.intent.action.GET_CONTENT");
-                intent.addCategory("android.intent.action.OPENABLE");
+                intent.addCategory("android.intent.category.OPENABLE");
                 intent.setType("image/*");
-                startActivityForResult(intent, 20);
+                startActivityForResult(intent,20);
             }
         });
     }
@@ -78,9 +78,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RESULT_OK){
-             = data.getData();
-
+        if (requestCode == 20  && resultCode == -1 && data != null ){
+            Uri uri;
+            this.uri = uri = data.getData();
+            this.imageView.setImageURI(uri);
         }
     }
 
