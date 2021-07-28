@@ -14,12 +14,17 @@ import com.example.noteapp.model.TaskModel;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     private ArrayList<TaskModel> list =new ArrayList<>();
 
     public void addModel(TaskModel model){
         list.add(model);
+        notifyDataSetChanged();
+    }
+    public void setList(List<TaskModel>models){
+        this.list.addAll(models);
         notifyDataSetChanged();
     }
     @NotNull

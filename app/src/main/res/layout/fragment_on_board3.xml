@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/dark"
+    tools:context=".onboard.OnBoardFragment3">
+
+    <TextView
+        android:id="@+id/start3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="440dp"
+        android:text="Куча функций и интересных фишек"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/photo3"
+        android:layout_width="287dp"
+        android:layout_height="264dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="60dp"
+        android:layout_alignParentTop="true"
+        app:lottie_repeatCount="999999"
+        android:layout_marginTop="120dp"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/board3"/>
+
+    <TextView
+        android:id="@+id/fn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grays"
+        android:layout_marginLeft="140dp"
+        android:textSize="16sp"
+        android:text="Начать работу"
+        android:layout_marginTop="500dp"/>
+
+</FrameLayout>

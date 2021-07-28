@@ -18,10 +18,10 @@
         app:cardCornerRadius="160dp">
 
         <ImageView
-            android:id="@+id/image"
+            android:id="@+id/image_save"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/photo" />
+            android:src="@drawable/ic_baseline_person_pin_24" />
     </androidx.cardview.widget.CardView>
 
     <TextView

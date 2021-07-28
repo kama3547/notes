@@ -12,8 +12,9 @@
     <color name="white2">#E5E5E5</color>
     <color name="gray2">#505050</color>#191818
     <color name="dark_gray">#191818</color>
-    <color name="white_light">#DADADA</color>
-
+    <color name="white_light">#DADADA</color>#8E8B8B
+    <color name="grays">#8E8B8B</color>
+    <color name="orange">#D88B02</color>
 
 
 

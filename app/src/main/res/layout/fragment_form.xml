@@ -8,58 +8,42 @@
     android:background="@color/teal_700"
     tools:context=".ui.form.FormFragment"
 >
-    <com.google.android.material.appbar.AppBarLayout
+
+
+    <RelativeLayout
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/Theme.NoteApp.AppBarOverlay">
+        android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/dark"
-            app:popupTheme="@style/Theme.NoteApp.PopupOverlay" >
+        <TextView
+            android:id="@+id/some_id"
+            android:layout_width="53dp"
+            android:layout_height="23dp"
+            android:layout_marginLeft="250dp"
+            android:text="Готово"
+            android:textColor="@color/purple_200"
+            android:textSize="15sp" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/some_id"
-                    android:layout_width="53dp"
-                    android:textColor="@color/purple_200"
-                    android:layout_height="23dp"
-                    android:textSize="15sp"
-                    android:layout_marginLeft="300dp"
-                    android:text="Готово"/>
-                <TextView
-                    android:id="@+id/s_id"
-                    android:layout_width="wrap_content"
-                    android:textColor="@color/white"
-                    android:layout_height="23dp"
-                    android:textSize="15sp"
-                    android:layout_marginLeft="48dp"
-                    android:text="30 мая"/>
+        <TextView
+            android:id="@+id/s_id"
+            android:layout_width="wrap_content"
+            android:layout_height="23dp"
+            android:layout_marginLeft="48dp"
+            android:text="30 мая"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/m_id"
-                    android:layout_width="wrap_content"
-                    android:textColor="@color/gray"
-                    android:layout_height="23dp"
-                    android:textSize="15sp"
-                    android:layout_marginLeft="103dp"
-                    android:text="17:13"/>
+        <TextView
+            android:id="@+id/m_id"
+            android:layout_width="wrap_content"
+            android:layout_height="23dp"
+            android:layout_marginLeft="103dp"
+            android:text="17:13"
+            android:textColor="@color/gray"
+            android:textSize="15sp" />
 
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="1dp"
-                    android:src="@drawable/shape1" />
 
-            </RelativeLayout>
-        </androidx.appcompat.widget.Toolbar>
-
-    </com.google.android.material.appbar.AppBarLayout>
+    </RelativeLayout>
 
     <EditText
         android:id="@+id/title_et"

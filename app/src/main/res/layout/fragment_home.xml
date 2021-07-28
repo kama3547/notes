@@ -23,8 +23,6 @@
         android:textColorHint="@color/gray2"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_task"
         android:layout_width="match_parent"
