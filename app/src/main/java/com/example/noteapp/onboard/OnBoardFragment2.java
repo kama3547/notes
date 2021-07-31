@@ -1,22 +1,15 @@
 package com.example.noteapp.onboard;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
 import com.example.noteapp.R;
 import com.example.noteapp.databinding.FragmentOnBoard2Binding;
-import com.example.noteapp.databinding.FragmentOnBoard3Binding;
-import com.example.noteapp.databinding.FragmentOnBoardBinding;
 import com.example.noteapp.utils.PrefrencesHelper;
-
 
 public class OnBoardFragment2 extends Fragment {
 
@@ -29,7 +22,6 @@ public class OnBoardFragment2 extends Fragment {
         seCliclListener();
         return binding.getRoot();
     }
-
     private void seCliclListener() {
         binding.txt2.setOnClickListener(v -> {
             PrefrencesHelper prefrencesHelper = new PrefrencesHelper();

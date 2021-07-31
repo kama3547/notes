@@ -3,6 +3,7 @@ package com.example.noteapp.ui.home;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
@@ -28,32 +31,37 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    private ArrayList<TaskModel> list = new ArrayList<>();
+    private static final String RESULT_KEY = "text" ;
+    private static final String Bundle_KEY = "" ;
+    private List<TaskModel> list = new ArrayList<>();
     boolean linear = true;
     private FragmentHomeBinding binding;
+    TaskModel taskModel;
     TaskAdapter adapter = new TaskAdapter();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         setupRecycler();
-        getdata();
+        delete();
+        getData();
         searchtitle();
-        getNotesFromDB();
         return binding.getRoot();
     }
 
-    private void getNotesFromDB() {
-        MyApp.instance.noteDao().getAll().observe(getViewLifecycleOwner(), list->{
-        });
-    }
 
 
-    private void getdata() {
-        getParentFragmentManager().setFragmentResultListener("txt",getViewLifecycleOwner(),(requestKey, result) ->  {
-            TaskModel model = (TaskModel) result.getSerializable("key");
-            list.add(model);
-            adapter.addModel(model);
+    private void getData() {
+        getParentFragmentManager().setFragmentResultListener(RESULT_KEY,getViewLifecycleOwner(),((requestKey, result) -> {
+            String text = result.getString(Bundle_KEY);
+            adapter.addModel(new TaskModel(text," "));
+        }));
+        MyApp.getInstance().noteDao().getAll().observe(requireActivity(), new Observer<List<TaskModel>>() {
+            @Override
+            public void onChanged(List<TaskModel> taskModels) {
+                adapter.setList(taskModels);
+                list = taskModels;
+            }
         });
     }
     private  void searchtitle(){
@@ -112,6 +120,22 @@ public class HomeFragment extends Fragment {
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+    private void delete() {
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT|ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull @NotNull RecyclerView recyclerView, @NonNull @NotNull RecyclerView.ViewHolder viewHolder, @NonNull @NotNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull @NotNull RecyclerView.ViewHolder viewHolder, int direction) {
+               // int position = viewHolder.getAdapterPosition();
+               // taskModel = adapter.getDelete(list.get(viewHolder.getAdapterPosition()));
+                MyApp.getInstance().noteDao().delete(list.get(viewHolder.getAdapterPosition()));
+            }
+        });
+        itemTouchHelper.attachToRecyclerView(binding.rvTask);
     }
 
     @Override

@@ -17,11 +17,16 @@ import com.example.noteapp.databinding.FragmentFormBinding;
 import com.example.noteapp.model.TaskModel;
 import com.example.noteapp.utils.MyApp;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 
 public class FormFragment extends Fragment {
 
     private FragmentFormBinding binding;
-    TaskModel taskModel;
+    private TaskModel taskModel;
+    public static final String Bundle_KEY = "text";
+    public static final String RESULT_KEY = "result";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -36,20 +41,18 @@ public class FormFragment extends Fragment {
     private void initClickListener(NavController navController) {
         binding.someId.setOnClickListener(v -> {
             String text = binding.titleEt.getText().toString().trim();
+            String title = binding.titleEt.getText().toString();
             if (TextUtils.isEmpty(text)){
                 binding.titleEt.setError("Input text correctly");
             }
-            else {
-                TaskModel taskModel = new TaskModel("title","17/09/2021");
-                MyApp.instance.noteDao().insert(taskModel);
-                String title = binding.titleEt.getText().toString();
-                taskModel = new  TaskModel(title, taskModel.getDate());
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("key",taskModel);
-                getParentFragmentManager().setFragmentResult("txt",bundle);
-                navController.navigateUp();
-            }
+            if (taskModel == null){
 
+
+                taskModel = new  TaskModel(title, "sdfds");
+                MyApp.getInstance().noteDao().insert(taskModel);
+
+            }
+            navController.navigateUp();
         });
     }
 }

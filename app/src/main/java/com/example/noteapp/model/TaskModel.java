@@ -8,7 +8,7 @@ import java.io.Serializable;
 @Entity
 public class TaskModel implements Serializable {
     @PrimaryKey(autoGenerate = true)
-    int id ;
+    public int id ;
     String title;
     String date;
 

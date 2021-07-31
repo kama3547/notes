@@ -24,8 +24,13 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         notifyDataSetChanged();
     }
     public void setList(List<TaskModel>models){
+        list.clear();
         this.list.addAll(models);
         notifyDataSetChanged();
+    }
+
+    public TaskModel getDelete(int position){
+        return list.get(position);
     }
     @NotNull
     @Override
