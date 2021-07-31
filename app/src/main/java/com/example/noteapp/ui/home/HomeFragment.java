@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,6 +24,7 @@ import com.example.noteapp.R;
 import com.example.noteapp.adapter.TaskAdapter;
 import com.example.noteapp.databinding.FragmentHomeBinding;
 import com.example.noteapp.model.TaskModel;
+import com.example.noteapp.onitemclicklistener.OnItemClickListener;
 import com.example.noteapp.utils.MyApp;
 
 import org.jetbrains.annotations.NotNull;
@@ -37,8 +40,16 @@ public class HomeFragment extends Fragment {
     boolean linear = true;
     private FragmentHomeBinding binding;
     TaskModel taskModel;
-    TaskAdapter adapter = new TaskAdapter();
+    TaskAdapter adapter;
+    NavController navController;
 
+    @Override
+    public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
+        super.onCreate(savedInstanceState);
+        adapter = new TaskAdapter();
+
+    }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
@@ -46,6 +57,18 @@ public class HomeFragment extends Fragment {
         delete();
         getData();
         searchtitle();
+        adapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(int position, TaskModel taskModel) {
+                Bundle bundle = new Bundle();
+                bundle.putInt("pos",position);
+                bundle.putSerializable("task", taskModel);
+                navController = Navigation.findNavController(requireActivity(),R.id.nav_host_fragment_content_main);
+                navController.navigate(R.id.action_nav_home_to_formFragment,bundle);
+                Log.e("TAG", "onItemClick: " + taskModel.getTitle() );
+
+            }
+        });
         return binding.getRoot();
     }
 
@@ -100,11 +123,7 @@ public class HomeFragment extends Fragment {
         binding.rvTask.setAdapter(adapter);
     }
 
-    @Override
-    public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        setHasOptionsMenu(true);
-        super.onCreate(savedInstanceState);
-    }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
@@ -137,6 +156,8 @@ public class HomeFragment extends Fragment {
         });
         itemTouchHelper.attachToRecyclerView(binding.rvTask);
     }
+
+
 
     @Override
     public void onDestroyView() {

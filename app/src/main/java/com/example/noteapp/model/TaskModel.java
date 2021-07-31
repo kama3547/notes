@@ -16,6 +16,8 @@ public class TaskModel implements Serializable {
         this.title = title;
         this.date = date;
     }
+
+
     public String getDate() {
         return date;
     }

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.noteapp.R;
 import com.example.noteapp.model.TaskModel;
+import com.example.noteapp.onitemclicklistener.OnItemClickListener;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -18,6 +19,11 @@ import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     private ArrayList<TaskModel> list =new ArrayList<>();
+    OnItemClickListener onItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
 
     public void addModel(TaskModel model){
         list.add(model);
@@ -51,6 +57,12 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         }
         public void onBind(TaskModel taskModel){
             title.setText(taskModel.getTitle());
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onItemClickListener.onItemClick(getAdapterPosition(),taskModel);
+                }
+            });
         }
     }
     @Override

@@ -2,6 +2,8 @@ package com.example.noteapp.ui.form;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -16,6 +18,8 @@ import com.example.noteapp.R;
 import com.example.noteapp.databinding.FragmentFormBinding;
 import com.example.noteapp.model.TaskModel;
 import com.example.noteapp.utils.MyApp;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -37,6 +41,16 @@ public class FormFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable  Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if (getArguments() != null){
+            taskModel = (TaskModel) getArguments().getSerializable("task");
+            if (taskModel != null){
+                binding.titleEt.setText(taskModel.getTitle());
+            }
+        }
+    }
 
     private void initClickListener(NavController navController) {
         binding.someId.setOnClickListener(v -> {
@@ -46,11 +60,12 @@ public class FormFragment extends Fragment {
                 binding.titleEt.setError("Input text correctly");
             }
             if (taskModel == null){
-
-
                 taskModel = new  TaskModel(title, "sdfds");
                 MyApp.getInstance().noteDao().insert(taskModel);
-
+            }
+            else {
+                taskModel.setTitle(title);
+                MyApp.getInstance().noteDao().update(taskModel);
             }
             navController.navigateUp();
         });
