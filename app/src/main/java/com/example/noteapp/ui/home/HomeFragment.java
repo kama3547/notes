@@ -74,6 +74,7 @@ public class HomeFragment extends Fragment {
 
 
 
+
     private void getData() {
         getParentFragmentManager().setFragmentResultListener(RESULT_KEY,getViewLifecycleOwner(),((requestKey, result) -> {
             String text = result.getString(Bundle_KEY);
@@ -149,8 +150,6 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onSwiped(@NonNull @NotNull RecyclerView.ViewHolder viewHolder, int direction) {
-               // int position = viewHolder.getAdapterPosition();
-               // taskModel = adapter.getDelete(list.get(viewHolder.getAdapterPosition()));
                 MyApp.getInstance().noteDao().delete(list.get(viewHolder.getAdapterPosition()));
             }
         });

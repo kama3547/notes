@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
-    private ArrayList<TaskModel> list =new ArrayList<>();
+    private ArrayList<TaskModel> list = new ArrayList<>();
     OnItemClickListener onItemClickListener;
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {

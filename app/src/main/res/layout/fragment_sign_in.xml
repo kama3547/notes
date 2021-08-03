@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray"
+    tools:context=".auth.SighInFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="240dp"
+        android:text="Login"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="290dp"
+        android:hint="Please sign in to continue"
+        android:textColorHint="@color/gray" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_op"
+        android:layout_marginLeft="140dp"
+        android:padding="10dp"
+        android:text="Forgot Password?"
+        android:textColor="@color/teal_200" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="270dp"
+        android:layout_marginTop="670dp"
+        android:padding="10dp"
+        android:text="Sign up"
+        android:textStyle="bold"
+        android:textColor="@color/teal_200" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="112dp"
+        android:layout_marginTop="670dp"
+        android:padding="10dp"
+        android:text="Don't have an account ?"
+        android:textColor="@color/gray2"
+        android:textStyle="bold" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="340dp"
+        android:drawableStart="@drawable/envelop"
+        android:hint="  input you gmail"
+        android:textColorHint="@color/gray2" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="400dp"
+        android:drawableStart="@drawable/password1"
+        android:hint="  input you password"
+        android:textColorHint="@color/gray2" />
+
+    <Button
+        android:id="@+id/btn_op"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="480dp"
+        android:layout_marginEnd="80dp"
+        android:background="@drawable/sear_ed"
+        android:backgroundTint="@color/teal_200"
+        android:text="LOGIN"
+        />
+
+
+
+</RelativeLayout>

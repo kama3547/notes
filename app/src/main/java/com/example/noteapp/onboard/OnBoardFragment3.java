@@ -14,7 +14,6 @@ import com.example.noteapp.R;
 import com.example.noteapp.databinding.FragmentOnBoard3Binding;
 import com.example.noteapp.utils.PrefrencesHelper;
 
-
 public class OnBoardFragment3 extends Fragment {
 
      private FragmentOnBoard3Binding binding;

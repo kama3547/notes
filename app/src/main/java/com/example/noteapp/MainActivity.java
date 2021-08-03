@@ -1,16 +1,25 @@
 package com.example.noteapp;
 
+import android.Manifest;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.speech.RecognitionListener;
+import android.speech.RecognizerIntent;
+import android.speech.SpeechRecognizer;
 import android.util.Base64;
 import android.view.View;
 import android.view.Menu;
 import android.view.ViewTreeObserver;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.noteapp.adapter.TaskAdapter;
@@ -24,6 +33,8 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -44,17 +55,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private static final int PICK_IMAGE_REQUEST =1 ;
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
     PrefrencesHelper prefrencesHelper = new PrefrencesHelper();
-    RecyclerView recyclerView;
-    List<TaskModel>models;
-    TaskModel taskModel;
-    TaskAdapter taskAdapter;
     SharedPreferences sharedPreferences;
     ImageView imageView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                     Glide.with(MainActivity.this)
                             .load(mGetContent)
                             .circleCrop()
-                            .placeholder(R.drawable.ic_baseline_person_pin_24)
+                            .placeholder(R.drawable.ic_person)
                             .into(imageView);
                 });
                 alertDialog.show();
@@ -145,16 +150,33 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-    private void destination(NavController navController){
-        navController.addOnDestinationChangedListener((controller, destination, arguments) ->{
-            if (destination.getId() == R.id.formFragment ||  destination.getId() == R.id.onBoardFragment){
+    private void destination(NavController navController) {
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            if (destination.getId() == R.id.formFragment || destination.getId() == R.id.onBoardFragment) {
                 binding.appBarMain.toolbarMain.setVisibility(View.GONE);
                 binding.appBarMain.fab.setVisibility(View.GONE);
-            }else {
+            } else {
                 binding.appBarMain.toolbarMain.setVisibility(View.VISIBLE);
                 binding.appBarMain.fab.setVisibility(View.VISIBLE);
             }
         });
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull @NotNull String[] permissions, @NonNull @NotNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode==1)
+        {
+            if (grantResults[0]==PackageManager.PERMISSION_GRANTED)
+            {
+                Toast.makeText(this,"Permission Granted",Toast.LENGTH_SHORT);
+            }
+            else
+            {
+                Toast.makeText(this,"Permission Denied",Toast.LENGTH_SHORT);
+            }
+        }
     }
 
     @Override
