@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.lifecycle.Lifecycle;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.noteapp.onboard.OnBoardFragment1;
 import com.example.noteapp.onboard.OnBoardFragment2;
@@ -11,15 +13,16 @@ import com.example.noteapp.onboard.OnBoardFragment3;
 
 import org.jetbrains.annotations.NotNull;
 
-public class ViewAdapter extends FragmentPagerAdapter {
-    public ViewAdapter(@NonNull @NotNull FragmentManager fm) {
-        super(fm);
+public class ViewAdapter extends FragmentStateAdapter {
+
+
+    public ViewAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
+        super(fragmentManager, lifecycle);
     }
 
     @NonNull
-    @NotNull
     @Override
-    public Fragment getItem(int position) {
+    public Fragment createFragment(int position) {
         switch (position){
             case 0:
                 return new OnBoardFragment1();
@@ -32,7 +35,7 @@ public class ViewAdapter extends FragmentPagerAdapter {
     }
 
     @Override
-    public int getCount() {
+    public int getItemCount() {
         return 3;
     }
 }
