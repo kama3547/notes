@@ -3,6 +3,7 @@ package com.example.noteapp.ui.home;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -25,6 +27,7 @@ import com.example.noteapp.adapter.TaskAdapter;
 import com.example.noteapp.databinding.FragmentHomeBinding;
 import com.example.noteapp.model.TaskModel;
 import com.example.noteapp.onitemclicklistener.OnItemClickListener;
+import com.example.noteapp.ui.form.FormFragment;
 import com.example.noteapp.utils.MyApp;
 
 import org.jetbrains.annotations.NotNull;
@@ -39,7 +42,7 @@ public class HomeFragment extends Fragment {
     private List<TaskModel> list = new ArrayList<>();
     boolean linear = true;
     private FragmentHomeBinding binding;
-    TaskModel taskModel;
+    FragmentTransaction fragmentTransaction ;
     TaskAdapter adapter;
     NavController navController;
 
@@ -48,8 +51,7 @@ public class HomeFragment extends Fragment {
         setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
         adapter = new TaskAdapter();
-
-    }
+   }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
@@ -71,10 +73,6 @@ public class HomeFragment extends Fragment {
         });
         return binding.getRoot();
     }
-
-
-
-
     private void getData() {
         getParentFragmentManager().setFragmentResultListener(RESULT_KEY,getViewLifecycleOwner(),((requestKey, result) -> {
             String text = result.getString(Bundle_KEY);
@@ -123,9 +121,6 @@ public class HomeFragment extends Fragment {
         }
         binding.rvTask.setAdapter(adapter);
     }
-
-
-
     @Override
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
         if (item.getItemId()== R.id.action_dash){
@@ -155,9 +150,6 @@ public class HomeFragment extends Fragment {
         });
         itemTouchHelper.attachToRecyclerView(binding.rvTask);
     }
-
-
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();

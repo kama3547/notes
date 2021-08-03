@@ -23,7 +23,6 @@ public class OnBoardFragment extends Fragment {
         viewAdd();
         return binding.getRoot();
     }
-
     private void viewAdd() {
         ViewAdapter viewAdapter = new ViewAdapter(getActivity().getSupportFragmentManager());
         binding.pager.setAdapter(viewAdapter);

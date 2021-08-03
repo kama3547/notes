@@ -18,6 +18,7 @@ import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.text.TextUtils;
+import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +51,6 @@ public class FormFragment extends Fragment {
         View root = binding.getRoot();
         return root;
     }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -64,8 +64,6 @@ public class FormFragment extends Fragment {
             }
         }
     }
-
-
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -81,7 +79,6 @@ public class FormFragment extends Fragment {
         checkPermission();
         initSpeechRecognizer();
     }
-
     private void initSpeechRecognizer() {
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(requireContext());
         final Intent speechRecord = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
@@ -147,7 +144,6 @@ public class FormFragment extends Fragment {
             }
         });
     }
-
     private void checkPermission() {
         if (ContextCompat.checkSelfPermission(requireContext(),
                 Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {

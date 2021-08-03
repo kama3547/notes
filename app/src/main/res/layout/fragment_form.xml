@@ -8,8 +8,6 @@
     android:background="@color/teal_700"
     tools:context=".ui.form.FormFragment"
 >
-
-
     <RelativeLayout
         android:layout_margin="10dp"
         android:layout_width="match_parent"
@@ -32,7 +30,6 @@
             android:text="30 мая"
             android:textColor="@color/white"
             android:textSize="15sp" />
-
         <TextView
             android:id="@+id/m_id"
             android:layout_width="wrap_content"
@@ -41,8 +38,6 @@
             android:text="17:13"
             android:textColor="@color/gray"
             android:textSize="15sp" />
-
-
     </RelativeLayout>
 
     <EditText

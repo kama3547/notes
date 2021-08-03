@@ -162,7 +162,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull @NotNull String[] permissions, @NonNull @NotNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -178,7 +177,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);

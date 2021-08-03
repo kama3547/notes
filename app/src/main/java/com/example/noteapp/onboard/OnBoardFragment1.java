@@ -26,7 +26,6 @@ public class OnBoardFragment1 extends Fragment {
         setClicklistener();
         return binding.getRoot();
     }
-
     private void setClicklistener() {
         binding.txt1.setOnClickListener(v -> {
             PrefrencesHelper prefrencesHelper = new PrefrencesHelper();
