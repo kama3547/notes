@@ -3,8 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/light_gray"
     tools:context=".auth.SighInFragment">
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="350dp"
+        android:layout_height="225dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        app:lottie_repeatCount="99999"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/login"
+        />
 
     <TextView
         android:layout_width="match_parent"
